@@ -1,0 +1,20 @@
+{
+  "name": "student-clearance-system",
+  "version": "1.0.0",
+  "description": "Student Clearance System with Node.js, Express, SQLite, Bootstrap dashboard UI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.4.0",
+    "connect-sqlite3": "^0.9.15",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "method-override": "^3.0.0"
+  }
+}

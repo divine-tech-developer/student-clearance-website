@@ -1,0 +1,54 @@
+<%- include('partials/header', { title: 'Student Dashboard' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 p-0"><%- include('partials/sidebar') %></div>
+    <div class="col-md-10 page-wrap">
+      <h2 class="mb-4">Student Dashboard</h2>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-3"><div class="card card-stat shadow-sm"><div class="card-body"><h6>Total Checkpoints</h6><h3><%= summary.total %></h3></div></div></div>
+        <div class="col-md-3"><div class="card card-stat shadow-sm"><div class="card-body"><h6>Approved</h6><h3 class="text-success"><%= summary.approved %></h3></div></div></div>
+        <div class="col-md-3"><div class="card card-stat shadow-sm"><div class="card-body"><h6>Pending</h6><h3 class="text-warning"><%= summary.pending %></h3></div></div></div>
+        <div class="col-md-3"><div class="card card-stat shadow-sm"><div class="card-body"><h6>Rejected</h6><h3 class="text-danger"><%= summary.rejected %></h3></div></div></div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="mb-0">My Clearance Requests</h4>
+        <a href="/student/request" class="btn btn-primary">New Request</a>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th>Checkpoint</th>
+                  <th>Status</th>
+                  <th>Remarks</th>
+                  <th>Updated</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% requests.forEach((r, i) => { %>
+                  <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= r.checkpoint_name %></td>
+                    <td><span class="badge bg-<%= r.status === 'approved' ? 'success' : r.status === 'rejected' ? 'danger' : 'warning' %>"><%= r.status %></span></td>
+                    <td><%= r.remarks || '-' %></td>
+                    <td><%= r.updated_at %></td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

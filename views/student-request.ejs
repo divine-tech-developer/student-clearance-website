@@ -1,0 +1,34 @@
+<%- include('partials/header', { title: 'New Request' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 p-0"><%- include('partials/sidebar') %></div>
+    <div class="col-md-10 page-wrap">
+      <h2 class="mb-4">Request Clearance</h2>
+
+      <% if (error) { %><div class="alert alert-danger"><%= error %></div><% } %>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <form method="POST" action="/student/request">
+            <div class="mb-3">
+              <label class="form-label">Select Checkpoint</label>
+              <select name="checkpoint_id" class="form-select" required>
+                <option value="">-- choose checkpoint --</option>
+                <% checkpoints.forEach((cp) => { %>
+                  <option value="<%= cp.id %>" <%= existingIds.includes(cp.id) ? 'disabled' : '' %>>
+                    <%= cp.name %> <%= existingIds.includes(cp.id) ? '(already requested)' : '' %>
+                  </option>
+                <% }) %>
+              </select>
+            </div>
+            <button class="btn btn-primary">Submit Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

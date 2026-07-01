@@ -1,0 +1,17 @@
+<div class="sidebar p-3">
+  <h4 class="mb-4">Dashboard</h4>
+  <ul class="nav flex-column">
+    <% if (user && user.role === 'student') { %>
+      <li class="nav-item"><a class="nav-link" href="/student/dashboard">Student Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/student/request">New Request</a></li>
+      <li class="nav-item"><a class="nav-link" href="/student/slip">Clearance Slip</a></li>
+    <% } %>
+    <% if (user && user.role === 'admin') { %>
+      <li class="nav-item"><a class="nav-link" href="/admin/dashboard">Admin Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/admin/checkpoints">Checkpoints</a></li>
+      <li class="nav-item"><a class="nav-link" href="/admin/requests">Requests</a></li>
+      <li class="nav-item"><a class="nav-link" href="/admin/students">Students</a></li>
+    <% } %>
+    <li class="nav-item mt-3"><a class="nav-link" href="/logout">Logout</a></li>
+  </ul>
+</div>

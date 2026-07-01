@@ -1,0 +1,38 @@
+<%- include('partials/header', { title: 'Students' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 p-0"><%- include('partials/sidebar') %></div>
+    <div class="col-md-10 page-wrap">
+      <h2 class="mb-4">Registered Students</h2>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <table class="table table-bordered align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Registered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% students.forEach((s, i) => { %>
+                <tr>
+                  <td><%= i + 1 %></td>
+                  <td><%= s.fullname %></td>
+                  <td><%= s.email %></td>
+                  <td><%= s.created_at %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

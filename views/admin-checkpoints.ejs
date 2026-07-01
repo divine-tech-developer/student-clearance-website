@@ -1,0 +1,55 @@
+<%- include('partials/header', { title: 'Manage Checkpoints' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 p-0"><%- include('partials/sidebar') %></div>
+    <div class="col-md-10 page-wrap">
+      <h2 class="mb-4">Manage Checkpoints</h2>
+
+      <% if (error) { %><div class="alert alert-danger"><%= error %></div><% } %>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <form class="row g-2" method="POST" action="/admin/checkpoints">
+            <div class="col-md-9">
+              <input type="text" name="name" class="form-control" placeholder="New checkpoint name" required>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-primary w-100">Add Checkpoint</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <table class="table table-bordered align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% checkpoints.forEach((c, i) => { %>
+                <tr>
+                  <td><%= i + 1 %></td>
+                  <td><%= c.name %></td>
+                  <td>
+                    <form method="POST" action="/admin/checkpoints/<%= c.id %>/delete" onsubmit="return confirm('Delete this checkpoint?')">
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

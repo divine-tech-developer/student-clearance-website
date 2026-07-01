@@ -1,0 +1,29 @@
+<%- include('partials/header', { title: 'Home' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold">Student Clearance System</h1>
+      <p class="lead">A simple web-based clearance platform for students and school administrators.</p>
+      <a href="/register" class="btn btn-primary btn-lg me-2">Register as Student</a>
+      <a href="/login" class="btn btn-outline-primary btn-lg">Login</a>
+    </div>
+    <div class="col-lg-6 mt-4 mt-lg-0">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h5 class="mb-3">Features</h5>
+          <ul class="mb-0">
+            <li>Student registration and login</li>
+            <li>Admin approval workflow</li>
+            <li>Multiple clearance checkpoints</li>
+            <li>Printable clearance slip</li>
+            <li>Bootstrap dashboard interface</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

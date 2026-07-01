@@ -1,0 +1,50 @@
+<%- include('partials/header', { title: 'Admin Dashboard' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 p-0"><%- include('partials/sidebar') %></div>
+    <div class="col-md-10 page-wrap">
+      <h2 class="mb-4">Admin Dashboard</h2>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-3"><div class="card card-stat shadow-sm"><div class="card-body"><h6>Students</h6><h3><%= totalStudents %></h3></div></div></div>
+        <div class="col-md-3"><div class="card card-stat shadow-sm"><div class="card-body"><h6>Checkpoints</h6><h3><%= totalCheckpoints %></h3></div></div></div>
+        <div class="col-md-3"><div class="card card-stat shadow-sm"><div class="card-body"><h6>Pending</h6><h3 class="text-warning"><%= pendingRequests %></h3></div></div></div>
+        <div class="col-md-3"><div class="card card-stat shadow-sm"><div class="card-body"><h6>Approved</h6><h3 class="text-success"><%= approvedRequests %></h3></div></div></div>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="mb-3">Recent Requests</h4>
+          <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th>Student</th>
+                  <th>Checkpoint</th>
+                  <th>Status</th>
+                  <th>Updated</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% recentRequests.forEach((r, i) => { %>
+                  <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= r.fullname %></td>
+                    <td><%= r.checkpoint_name %></td>
+                    <td><%= r.status %></td>
+                    <td><%= r.updated_at %></td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
